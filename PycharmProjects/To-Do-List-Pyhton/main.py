@@ -1,4 +1,3 @@
-to_dos = []
 
 while True:
     desicion = input("Type add or show, edit, complete or exit: ")
@@ -6,11 +5,20 @@ while True:
 
     match desicion:
         case "add":
-            to_do = input("Enter a to do: ")
-            to_dos.append(to_do)
+            to_do = input("Enter a to do: ") + "\n"
+            file = open('to_dos.txt','r') # We create a read first to get its values
+            file.close() # It is better to close the file once we already have the information stored in the file variable
+            to_dos = file.readlines() # We assign the values that were already there to the list
+            to_dos.append(to_do) # We provide the added to do to the RAM
+            file = open('to_dos.txt','w')  # We open the file again, this time to write the added to do.
+            file.writelines(to_dos) # We write the file with all of the new information
+            file.close() # Again, once we write the new info in the file, we once again close it.
         case "show":
+            file = open('to_dos.txt', 'r')
+            to_dos = file.readlines()
+            file.close()
             for index, x in enumerate(to_dos):
-                print(f"{index + 1}. {x.capitalize()}")
+               print(f"{index + 1}. {x.capitalize()}")
         case "edit":
             for index, x in enumerate(to_dos):
                 print(f"{index + 1}. {x.capitalize()}")
