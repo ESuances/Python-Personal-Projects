@@ -17,8 +17,10 @@ while True:
             file = open('to_dos.txt', 'r')
             to_dos = file.readlines()
             file.close()
+            #new_to_do = [item.strip('\n') for item in to_dos] Previous code to remove the gap between items
             for index, x in enumerate(to_dos):
-               print(f"{index + 1}. {x.capitalize()}")
+                x = x.strip('\n')
+                print(f"{index + 1}. {x.capitalize()}")
         case "edit":
             for index, x in enumerate(to_dos):
                 print(f"{index + 1}. {x.capitalize()}")
