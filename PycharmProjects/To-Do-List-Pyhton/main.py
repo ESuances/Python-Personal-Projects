@@ -1,4 +1,8 @@
-from logging import exception
+def get_to_dos():
+    with open("to_dos.txt", "r") as file_local:
+        to_dos_local = file_local.readlines()
+    return to_dos_local
+
 
 while True:
     decision = input("Type add or show, edit, complete or exit: ")
@@ -6,14 +10,12 @@ while True:
 
     if decision.startswith("add"):
         to_do = decision[4:] # This way, the user can Just type "add Programar" and the program will automatically take the new to_do
-        with open("to_dos.txt", "r") as file:
-            to_dos = file.readlines()
-            to_dos.append(to_do + '\n') # We provide the added to do to the RAM
+        to_dos = get_to_dos() # This way, we don't have to repeat the same code all the time, we just use the function.
+        to_dos.append(to_do + '\n') # We provide the added to do to the RAM
         with open("to_dos.txt", "w") as file:
             file.writelines(to_dos)
     elif decision.startswith("show"):
-        with open("to_dos.txt", "r") as file:
-            to_dos = file.readlines()
+        to_dos = get_to_dos() # This way, we don't have to repeat the same code all the time, we just use the function.
             #new_to_do = [item.strip('\n') for item in to_dos] Previous code to remove the gap between items
         for index, x in enumerate(to_dos):
             x = x.strip('\n')
@@ -21,8 +23,7 @@ while True:
     elif decision.startswith("edit"):
         try: # Error handling
             # We open the to do list .txt to store the values of the file on the variable to_dos
-            with open("to_dos.txt","r") as file:
-                to_dos = file.readlines()
+            to_dos = get_to_dos() # This way, we don't have to repeat the same code all the time, we just use the function.
             # We print out the list so the user knows which to_do to edit
             for index, x in enumerate(to_dos):
                 x = x.strip('\n')
@@ -47,8 +48,7 @@ while True:
     elif decision.startswith("complete"):
         try:
             # We open the .txt to get access to the current data on it
-            with open("to_dos.txt","r") as file:
-                to_dos = file.readlines()
+            to_dos = get_to_dos() # This way, we don't have to repeat the same code all the time, we just use the function.
             # We print out the list with the number so that the user knows which one to select
             for index, x in enumerate(to_dos):
                 x = x.strip('\n')
