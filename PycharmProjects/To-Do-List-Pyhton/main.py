@@ -1,75 +1,68 @@
-def get_to_dos():
-    with open("to_dos.txt", "r") as file_local:
+def get_to_dos(filepath):
+    with open(filepath, "r") as file_local:
         to_dos_local = file_local.readlines()
     return to_dos_local
 
+def write_to_dos(filepath, to_dos_local):
+    with open(filepath, "w") as file_local:
+        file_local.writelines(to_dos_local)
+
+def printOutTo_dos(to_dos_local):
+    for index, x in enumerate(to_dos_local):
+        x = x.strip('\n')
+        print(f"{index + 1}. {x.capitalize()}")
+
+def add_to_dos(decision_local):
+    to_do = decision_local[4:]
+    to_dos = get_to_dos("to_dos.txt")
+    to_dos.append(to_do + '\n')
+    write_to_dos("to_dos.txt", to_dos)
+
+def show_to_dos():
+    to_dos = get_to_dos("to_dos.txt")
+    printOutTo_dos(to_dos)
+
+def edit_to_dos():
+    try:  # Error handling
+        to_dos = get_to_dos("to_dos.txt")
+        printOutTo_dos(to_dos)
+        edit_to_do = int(input("Enter the number of the to do you wish to edit: "))
+        edit_to_do = edit_to_do - 1
+        new_to_do = decision[5:]
+        to_dos[edit_to_do] = new_to_do + '\n'
+        write_to_dos("to_dos.txt", to_dos)
+        print("The new list now looks like this: ")
+        printOutTo_dos(to_dos)
+    except ValueError:  # Cuando el user ingresa un valor no aceptado, se muestra este error
+        print("Your command is not valid, please try again.")
+
+def complete_to_dos():
+    try:
+        to_dos = get_to_dos("to_dos.txt")
+        printOutTo_dos(to_dos)
+        item_to_remove = int(input("Enter the number of the task you completed: "))
+        to_dos.pop(item_to_remove - 1)
+        write_to_dos("to_dos.txt", to_dos)
+        print("Great, well done, now the list looks like this: ")
+        printOutTo_dos(to_dos)
+    # Error handling, making sure if the program gets into any error, we let the user know
+    except ValueError:  # If the user types an invalid type, for example a letter
+        print("Your command is not valid, please try again.")
+    except IndexError:  # If the number is not on the range of the array
+        print("The inputed number is not on the list, pleaase try again.")
 
 while True:
     decision = input("Type add or show, edit, complete or exit: ")
     decision = decision.strip()
 
     if decision.startswith("add"):
-        to_do = decision[4:] # This way, the user can Just type "add Programar" and the program will automatically take the new to_do
-        to_dos = get_to_dos() # This way, we don't have to repeat the same code all the time, we just use the function.
-        to_dos.append(to_do + '\n') # We provide the added to do to the RAM
-        with open("to_dos.txt", "w") as file:
-            file.writelines(to_dos)
+        add_to_dos(decision)
     elif decision.startswith("show"):
-        to_dos = get_to_dos() # This way, we don't have to repeat the same code all the time, we just use the function.
-            #new_to_do = [item.strip('\n') for item in to_dos] Previous code to remove the gap between items
-        for index, x in enumerate(to_dos):
-            x = x.strip('\n')
-            print(f"{index + 1}. {x.capitalize()}")
+        show_to_dos()
     elif decision.startswith("edit"):
-        try: # Error handling
-            # We open the to do list .txt to store the values of the file on the variable to_dos
-            to_dos = get_to_dos() # This way, we don't have to repeat the same code all the time, we just use the function.
-            # We print out the list so the user knows which to_do to edit
-            for index, x in enumerate(to_dos):
-                x = x.strip('\n')
-                print(f"{index + 1}. {x.capitalize()}")
-            # Once the user knows the to_dos and their number, they can pick whichever the want to edit
-            edit_to_do = int(input("Enter the number of the to do you wish to edit: "))
-            edit_to_do = edit_to_do - 1
-            # After the player selects which one to edit, now the user can edit the to_do, asigning the value on new_to_do
-            new_to_do = decision[5:] # Same as in add, the user will edit the selected to_do with the task from the first decision
-            # And assigning the value to de selected to_do with edit_to_do and changing the value with the variable new_to_do
-            to_dos[edit_to_do] = new_to_do + '\n'
-            # We open the file to assign the new values to the .txt list
-            with open("to_dos.txt", "w") as file:
-                file.writelines(to_dos)
-            # We print out the new list so that the user knows how it looks now.
-            print("The new list now looks like this: ")
-            for index, x in enumerate(to_dos):
-                x = x.strip('\n')
-                print(f"{index  + 1}. {x.capitalize()}")
-        except ValueError: # Cuando el user ingresa un valor no aceptado, se muestra este error
-            print("Your command is not valid, please try again.")
+        edit_to_dos()
     elif decision.startswith("complete"):
-        try:
-            # We open the .txt to get access to the current data on it
-            to_dos = get_to_dos() # This way, we don't have to repeat the same code all the time, we just use the function.
-            # We print out the list with the number so that the user knows which one to select
-            for index, x in enumerate(to_dos):
-                x = x.strip('\n')
-                print(f"{index + 1}. {x.capitalize()}")
-            # We ask the user which one the user wants to remove
-            item_to_remove = int(input("Enter the number of the task you completed: "))
-            # We remove it from the array
-            to_dos.pop(item_to_remove - 1)
-            # We write the .txt file again with the removed item
-            with open("to_dos.txt", "w") as file:
-                file.writelines(to_dos)
-            # We show the user how the list looks after the change.
-            print("Great, well done, now the list looks like this: ")
-            for index, x in enumerate(to_dos):
-                x = x.strip('\n')
-                print(f"{index + 1}. {x.capitalize()}")
-        # Error handling, making sure if the program gets into any error, we let the user know
-        except ValueError: # If the user types an invalid type, for example a letter
-            print("Your command is not valid, please try again.")
-        except IndexError: # If the number is not on the range of the array
-            print("The inputed number is not on the list, pleaase try again.")
+        complete_to_dos()
     elif decision.startswith("exit"):
         break
     else:

@@ -1,4 +1,3 @@
 ejercicio
-programar
+Programar
 GameDev
-Modelar 3D
