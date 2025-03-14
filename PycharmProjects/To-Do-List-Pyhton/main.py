@@ -1,4 +1,8 @@
 from functions import add_to_dos, show_to_dos, edit_to_dos, complete_to_dos
+import time
+
+now = time.strftime("%d %b, %Y %H:%M:%S")
+print(f"Hello!, Welcome, it is {now}")
 while True:
     decision = input("Type add or show, edit, complete or exit: ")
     decision = decision.strip()
