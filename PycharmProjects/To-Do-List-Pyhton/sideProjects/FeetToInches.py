@@ -8,7 +8,7 @@ input2 = sg.Input(key="inches")
 convert_button = sg.Button("Convert")
 label3 = sg.Text("", key="result")
 
-window = sg.Window("Feet and inches to CM by ESuances",
+window = sg.Window("Feet and inches to cm by ESuances",
                    layout=[[label1, input1],
                            [label2, input2],
                            [convert_button, label3]])
