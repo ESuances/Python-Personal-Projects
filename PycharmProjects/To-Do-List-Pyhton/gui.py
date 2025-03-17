@@ -1,6 +1,11 @@
 import functions
 import FreeSimpleGUI as sg
 import time
+import os
+
+if not os.path.exists("to_dos.txt"):
+    with open("to_dos.txt", "w") as file:
+        pass
 
 sg.theme("Black")
 

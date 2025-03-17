@@ -1,2 +1,6 @@
 # created by virtualenv automatically
 .venv/Lib
+sideProjects/MarioRestarter/build
+sideProjects/MarioRestarter/dist
+sideProjects/MarioRestarter/ffplay.exe
+sideProjects/MarioRestarter/NotAVideo.mp4
