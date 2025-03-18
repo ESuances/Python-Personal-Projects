@@ -1,5 +1,2 @@
 Programar
 GameDev
-Hacer ejercicio
-Crear el pico basico
-Hablar con mi mama
