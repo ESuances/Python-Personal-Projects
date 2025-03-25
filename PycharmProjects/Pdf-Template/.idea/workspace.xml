@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="78617d0f-bff7-40a4-bad2-d8c9164ff717" name="Changes" comment="" />
+    <list default="true" id="78617d0f-bff7-40a4-bad2-d8c9164ff717" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../PDF_InvoiceGenerator/ExercisesOfTheDay/Day 25 - Txt to PDF/TxTFiles/cats.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PDF_InvoiceGenerator/ExercisesOfTheDay/Day 25 - Txt to PDF/TxTFiles/dogs.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PDF_InvoiceGenerator/ExercisesOfTheDay/Day 25 - Txt to PDF/TxTFiles/foxes.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PDF_InvoiceGenerator/ExercisesOfTheDay/Day 25 - Txt to PDF/TxTFiles/snakes.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PDF_InvoiceGenerator/ExercisesOfTheDay/Day 25 - Txt to PDF/txtToPDF.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
