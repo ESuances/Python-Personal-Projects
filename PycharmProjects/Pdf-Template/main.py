@@ -1,6 +1,8 @@
 from fpdf import FPDF
 import pandas as pd
 
+# Rest day, will delete tomorrow
+
 pdf = FPDF(orientation="P", unit="mm", format="A4")
 pdf.set_auto_page_break(auto=False, margin=0)
 
