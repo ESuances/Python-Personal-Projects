@@ -14,7 +14,7 @@ for filepath in filepaths:
     file_name = file.split(".") # We split the string to get rid of the .txt
     pdf.add_page() # We add the page where the info of the said animal will be displayed
     pdf.set_font(family="Times", size=24, style="B") # We set the title format
-    pdf.cell(w=0, h=12, txt=file_name[0].capitalize()) # We set the filename on the title as we set it before
+    pdf.cell(w=0, h=12, txt=file_name[0].capitalize(), ln=1) # We set the filename on the title as we set it before
     pdf.ln(15)
     with open(filepath, "r") as file_local:
         text = file_local.readlines() # We get the text from the .txt file

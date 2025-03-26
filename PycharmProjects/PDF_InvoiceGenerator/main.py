@@ -11,7 +11,9 @@ for filepath in filepaths:
     df = pd.read_excel(filepath, sheet_name="Sheet 1") # This is in particular from pandas to read Excel files.
     pdf = FPDF(orientation="P", unit="mm", format="A4")
     pdf.add_page()
-    filename = Path(filepath).stem[:5] # We get the name of the file by using this library.
+    filename = Path(filepath).stem # We get the filename from that library
+    invoice_num, date = filename.split('-')
     pdf.set_font(family="Times", size=16, style="B")
-    pdf.cell(w=50, h=8, txt=f"Invoice nr.{filename}") # Title of the PDF
-    pdf.output(f"GeneratedPDFs/{filename}.pdf") # Name of the PDF and where it would be outputed.
+    pdf.cell(w=50, h=8, txt=f"Invoice nr.{invoice_num}", ln=1) # Title of the PDF
+    pdf.cell(w=50, h=8, txt=f"Date: {date}")  # Title of the PDF
+    pdf.output(f"GeneratedPDFs/{invoice_num}.pdf") # Name of the PDF and where it would be outputed.
