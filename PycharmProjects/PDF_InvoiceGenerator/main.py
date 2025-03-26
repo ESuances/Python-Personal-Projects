@@ -38,12 +38,18 @@ for filepath in filepaths:
         pdf.cell(w=65, h=8, txt=str(row["product_name"]), border=1, align='C')
         pdf.cell(w=32, h=8, txt=str(row["amount_purchased"]), border=1, align='C')
         pdf.cell(w=30, h=8, txt=str(row["price_per_unit"]), border=1, align='C')
-        pdf.cell(w=30, h=8, txt=str(row["total_price"]), border=1, align='C')
+        pdf.cell(w=30, h=8, txt=f"${row["total_price"]}", border=1, align='C')
         total_sum = row["total_price"] + total_sum # We get the value of all the added prices
         pdf.ln()
 
     pdf.cell(w=157, h=8)
-    pdf.cell(w=30, h=8, txt=str(total_sum), border = 1, align = 'C')
+    pdf.set_font(family="Times", style="B")
+    pdf.cell(w=30, h=8, txt=f"${total_sum}", border = 1, align = 'C', ln=1)
+    pdf.ln(10)
+    pdf.set_font(family="Times", size=16, style="B")
+    pdf.cell(w=30, h=8, txt=f"The total of this purchases is: ${total_sum}", ln=1)
+    pdf.cell(w=30, h=8, txt=f"Made by ESuances")
+
 
 
     pdf.output(f"GeneratedPDFs/{invoice_num}.pdf") # Name of the PDF and where it would be outputed.
