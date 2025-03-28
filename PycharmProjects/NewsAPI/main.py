@@ -5,7 +5,9 @@
 import requests
 from send_email import sendEmail
 
-url = "https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=d379715cbdb344548f8c01adbcd96e42&language=en"
+topic = "techcrunch"
+
+url = f"https://newsapi.org/v2/top-headlines?sources={topic}&apiKey=d379715cbdb344548f8c01adbcd96e42&language=en"
 API = "d379715cbdb344548f8c01adbcd96e42"
 
 # Made a request
