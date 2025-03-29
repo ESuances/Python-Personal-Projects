@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/BushCraftAPI.iml" filepath="$PROJECT_DIR$/.idea/BushCraftAPI.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/WheatherDataAPI.iml" filepath="$PROJECT_DIR$/.idea/WheatherDataAPI.iml" />
     </modules>
   </component>
 </project>
