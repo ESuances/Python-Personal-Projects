@@ -43,6 +43,20 @@ def about(station, date):
     # Convert the result to JSON and return
     return jsonify(weather_result)
 
+@app.route("/api/v1/<station>")
+def all_data(station):
+    filename = "data_small/TG_STAID" + str(station).zfill(6) + ".txt"
+    df = pd.read_csv(filename, skiprows=20, parse_dates=["    DATE"])
+    result = df.to_dict(orient="records") # We get the selected data and we manipulate it to display as we please
+    return result
+
+@app.route("/api/v1/yearly/<station>/<year>") #This is another way to get the data and to not interfier with other routes to get the data-
+def yearly(station, year):
+    filename = "data_small/TG_STAID" + str(station).zfill(6) + ".txt"
+    df = pd.read_csv(filename, skiprows=20)
+    df["    DATE"] = df["    DATE"].astype(str)
+    result = df[df["    DATE"].str.startswith(str(year))].to_dict(orient="records")
+    return result
 
 if __name__ == "__main__": # This makes it so that only when we run this file, this code is actually executed, meaning creating the site on Flask
     app.run(debug=True)
