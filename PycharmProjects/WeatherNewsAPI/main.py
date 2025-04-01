@@ -3,9 +3,14 @@ import pandas as pd
 
 app = Flask(__name__) # This takes the literal name of the file without .py
 
+variable = "Hello there"
+
+stations = pd.read_csv("data_small/stations.txt", skiprows=17)
+stations = stations[["STAID", "STANAME                                 "]] # This is so that we only show those specific rows in the page.
+
 @app.route('/') #This will be the starting page.
 def home():
-    return render_template('home.html')
+    return render_template('home.html', data=stations.to_html())
 
 
 @app.route("/api/v1/<station>/<date>")
